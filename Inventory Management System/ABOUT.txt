@@ -1,1 +1,78 @@
+📦 Inventory Management System (SQL Project)
+* This repository contains the SQL scripts for a basic Inventory Management System database.
+* The project demonstrates fundamental SQL concepts including database creation, table design with relationships, CRUD (Create, Read, Update, Delete) operations, and various queries for data retrieval and analysis.
 
+✨ Features
+* Database Schema: Designed with Suppliers, Products, and Stock tables.
+* CRUD Operations: Examples for inserting, selecting, updating, and deleting records in each table.
+* Relationship Management: Utilizes PRIMARY KEY and FOREIGN KEY constraints to maintain data integrity.
+* Specific Queries: Includes queries to identify low-stock items, find products from a specific supplier, and calculate total inventory value.
+
+🛠️ Technologies Used
+* MySQL: Relational Database Management System.
+* MySQL Workbench: Used for database interaction and query execution.
+
+🚀 Getting Started
+* Follow these steps to set up and run the project on your local machine using MySQL Workbench.
+* Prerequisites:
+  - MySQL Server installed.
+  - MySQL Workbench installed.
+* Setup Instructions
+  - Clone the Repository.
+  - Open MySQL Workbench.
+  - Connect to your MySQL server instance.
+  - Create the Database.
+  - Create Tables.
+  - Insert Sample Data.git clone 
+
+📊 Database Schema
+* The database consists of three main tables:
+* Suppliers: Stores information about product suppliers. [Supplier_ID (PK), Supplier_Name, Contact, Phone_No, Email (Unique)]
+* Products: Stores details about the products. [Product_ID (PK), Product_Name, Description, Price, Supplier_ID (FK to Suppliers)]
+* Stock: Tracks inventory levels for each product. [Stock_ID (PK), Product_ID (FK to Products, Unique), Qty_in_hand, Reorder-Point, Last_Updated]
+
+🔍 Key Queries
+* Here are some important queries demonstrated in this project that showcase core functionalities:
+1. Identify Low-Stock Items
+Lists products where the current quantity on hand is below their defined reorder point.
+
+SELECT
+    P.product_name,
+    S.quantity_on_hand,
+    S.reorder_point,
+    Sup.supplier_name AS Supplier
+FROM Stock AS S
+INNER JOIN Products AS P ON S.product_id = P.product_id
+INNER JOIN Suppliers AS Sup ON P.supplier_id = Sup.supplier_id
+WHERE S.quantity_on_hand < S.reorder_point;
+
+2. Products from a Specific Supplier
+Retrieves all products supplied by a particular supplier.
+
+SELECT
+    P.product_name,
+    P.description,
+    P.price,
+    S.quantity_on_hand
+FROM Products AS P
+INNER JOIN Suppliers AS Sup ON P.supplier_id = Sup.supplier_id
+LEFT JOIN Stock AS S ON P.product_id = S.product_id
+WHERE Sup.supplier_name = 'Tech Gadgets Inc.'; -- Change supplier name as needed
+
+3. Total Inventory Value
+Calculates the total number of items in stock and their combined monetary value.
+
+SELECT
+    SUM(S.quantity_on_hand) AS TotalItemsInStock,
+    SUM(S.quantity_on_hand * P.price) AS TotalInventoryValue
+FROM Stock AS S
+INNER JOIN Products AS P ON S.product_id = P.product_id;
+
+## Contributing
+* Feel free to fork this repository, make improvements, or add new features! Pull requests are welcome.
+
+## License
+This project is open-sourced under the MIT License.
+
+## Author
+* www.linkedin.com/in/priyanka-s-kumar-1580b0218
