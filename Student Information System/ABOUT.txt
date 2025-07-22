@@ -1,1 +1,77 @@
+🎓 Student Information System (SQL Project)
+* This repository contains the SQL scripts for a basic Student Information System database.
+* The project demonstrates fundamental SQL concepts including database creation, table design with relationships, CRUD (Create, Read, Update, Delete) operations, and various queries for data retrieval and analysis.
 
+✨ Features
+* Database Schema: Designed with Students, Courses, Enrollments, and Grades tables.
+* CRUD Operations: Examples for inserting, selecting, updating, and deleting records in each table.
+* Relationship Management: Utilizes PRIMARY KEY and FOREIGN KEY constraints to maintain data integrity, including a unique constraint for enrollments.
+* Specific Queries: Includes queries for adding students, enrolling students in courses, assigning grades, and retrieving student transcripts.
+
+🛠️ Technologies Used
+* MySQL: Relational Database Management System.
+* MySQL Workbench: Used for database interaction and query execution.
+
+🚀 Getting Started
+* Follow these steps to set up and run the project on your local machine using MySQL Workbench.
+* Prerequisites: 
+  - MySQL Server installed.
+  - MySQL Workbench installed.
+* Setup Instructions
+  - Clone the Repository.
+  - Open MySQL Workbench.
+  - Connect to your MySQL server instance.
+  - Create the Database.
+  - Create Tables.
+  - Insert Sample Data.git clone 
+
+📊 Database Schema
+* The database consists of four main tables:
+* Students: Stores information about students. [Student_ID (PK), First_Name, Last_Name,DOB, Email (Unique)]
+* Courses: Stores details about the courses offered. [Course_ID (PK), Course_Name, Course_Code (Unique), Credits]
+* Enrollments: Records which students are enrolled in which courses. [Enrollment_ID (PK), Student_ID (FK to Students), Course_ID (FK to Courses), Enrollment_Date]
+* UNIQUE (Student_ID, Course_ID)
+* Grades: Stores grades for student enrollments. [Grade_ID (PK), Enrollment_ID (FK to Enrollments), Grade, Grade_Date]
+
+🔍 Key Queries
+* Here are some important queries demonstrated in this project that showcase core functionalities:
+1. Add a New Student
+INSERT INTO Students (first_name, last_name, date_of_birth, email) VALUES
+('Diana', 'Prince', '2002-03-10', 'diana.p@example.com');
+
+2. Enroll a Student in a Course
+-- Enroll Diana (student_id 4) in Database Management Systems (course_id 2)
+INSERT INTO Enrollments (student_id, course_id, enrollment_date) VALUES
+(4, 2, '2025-01-20');
+
+3. Assign a Grade to an Enrollment
+-- Assign a grade of 'B+' to Diana's enrollment in CS205 (assuming enrollment_id 4 for the above enrollment)
+INSERT INTO Grades (enrollment_id, grade, grade_date) VALUES
+(4, 'B+', '2025-05-25');
+
+4. Retrieve a Student's Transcript
+Lists all courses a student is enrolled in, along with their grades (if available).
+
+SELECT
+    S.first_name,
+    S.last_name,
+    C.course_name,
+    C.course_code,
+    C.credits,
+    G.grade,
+    G.grade_date,
+    E.enrollment_date
+FROM Students AS S
+JOIN Enrollments AS E ON S.student_id = E.student_id
+JOIN Courses AS C ON E.course_id = C.course_id
+LEFT JOIN Grades AS G ON E.enrollment_id = G.enrollment_id
+WHERE S.student_id = 1; -- Replace with the student_id you want to view
+
+## Contributing
+* Feel free to fork this repository, make improvements, or add new features! Pull requests are welcome.
+
+## License
+* This project is open-sourced under the MIT License.
+
+## Author
+* www.linkedin.com/in/priyanka-s-kumar-1580b0218
