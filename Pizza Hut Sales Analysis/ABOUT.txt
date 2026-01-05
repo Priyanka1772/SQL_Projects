@@ -1,0 +1,32 @@
+## Pizza Hut Sales Analysis using SQL
+
+## Project Overview
+* This project focuses on analyzing Pizza Hut sales data to uncover key revenue drivers and customer ordering patterns.
+* Using SQL, raw transactional data was transformed into meaningful business insights.
+* The analysis demonstrates practical SQL skills applied to a real-world sales dataset.
+
+## Features
+* Sales Analysis: Evaluation of total revenue, order volume, and product performance.
+* Category & Size Insights: Analysis of pizza categories and sizes contributing most to sales.
+* Order Pattern Analysis: Identification of peak ordering trends and customer behavior.
+* Business-Driven Queries: Insights derived through targeted analytical SQL queries.
+
+## Technologies Used
+* SQL
+* Relational Databases
+* Aggregate Functions
+* Joins & Subqueries
+
+## Key Skills Demonstrated
+* Data Analysis using SQL
+* Writing Complex SQL Queries
+* Business Insight Generation
+* Exploratory Data Analysis (EDA)
+* Data Interpretation & Storytelling
+
+## How To Access
+* The SQL (.sql) file has been uploaded to this repository.
+* Load the dataset into a SQL-compatible database (MySQL / PostgreSQL).
+* Execute the queries sequentially to explore sales trends and insights.
+
+
