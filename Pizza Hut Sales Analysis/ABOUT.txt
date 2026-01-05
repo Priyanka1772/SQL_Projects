@@ -29,4 +29,5 @@
 * Load the dataset into a SQL-compatible database (MySQL / PostgreSQL).
 * Execute the queries sequentially to explore sales trends and insights.
 
-
+## LinkedIn Post Link
+[--  Link to  be  inserted --]
